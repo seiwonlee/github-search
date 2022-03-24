@@ -17,7 +17,7 @@ export class SearchComponent implements OnInit {
   selectedSort:any;
   
   searchTextInput="";
-  searchResults:any;
+  searchResults:any=[];
   args:SearchInput;
   output:SearchOutput;
 
@@ -84,11 +84,6 @@ export class SearchComponent implements OnInit {
   }
 
   changeSort(e){
-    // reset for sort
-    // this.args.paginationDirection = 1;
-    // this.args.endCursor = "";
-    // this.args.startCursor = "";
-    // this.args.currentPage = 0;
     this.initializeSearch();
     this.loadPage({page:0});
   }
@@ -115,7 +110,7 @@ export class SearchComponent implements OnInit {
       {name: 'Fewest repositories', code: 'repositories-asc'},
     ];
     this.selectedSort = {name: 'Best match', code: ''};
-    this.searchResults = [];
+    // this.searchResults = [];
     
   }
   msg(severity, summary, err, life?){

@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  token: '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',
+  token: 'provide PAT from GitHub',
   apiBaseUrl: 'https://api.github.com'
 };
