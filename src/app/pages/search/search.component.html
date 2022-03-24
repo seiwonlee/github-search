@@ -1,0 +1,81 @@
+<div>
+    <div class="text-center"><h1 class="m-0 font-medium">GitHub Users Search</h1></div>
+    <div *ngIf="searchResults" class="banner flex flex-column justify-content-between align-items-center">
+        <div class="w-full p-3">
+            <div class="p-input-icon-left white-space-nowrap w-full justify-content-center flex">
+                <i class="pi pi-search ml-1"></i>
+                <input (keydown.enter)='searchUsers()' [(ngModel)]="searchTextInput" type="text" class="p-inputtext-md" placeholder="Search for users..."  pInputText />
+                <button (click)="searchUsers()" [disabled]="searchTextInput==='' || searchTextInput.length > 256"  pButton type="button" label="Search" class="p-button-outlined p-button-sm ml-1"></button>
+            </div>
+        </div>
+        <div *ngIf="initialized" class="flex justify-content-between px-3 w-full align-items-center">
+            <h2>{{output.totalRecords | number}} user{{output.totalRecords === 1 ? '':'s'}} found.</h2>
+            <p-dropdown 
+                [appendTo]="'body'"
+                (onChange)="changeSort($event)"
+                [options]="searchSortOptions" 
+                [(ngModel)]="selectedSort" 
+                placeholder="Sort options" 
+                optionLabel="name">
+            </p-dropdown>
+        </div>
+    </div>
+    <div *ngIf="searchResults?.length > 0" class="list">
+        <div *ngFor="let item of searchResults" class="list-item">
+            <div class="header">
+                <div class="flex align-items-center justify-content-between">
+                    <div class="handle">
+                        <img [src]="item.avatarUrl"/>
+                        <a href="{{item.url}}">{{item.name}}</a> 
+                        <a class="no-hilite" href="{{item.url}}">{{item.login}}</a>
+                    </div>
+                    <div class="action">
+                        <button *ngIf="!item.viewerIsFollowing" (click)="followUser($event, item)"  pButton type="button" label="Follow" class="p-button-outlined p-button-sm"></button>
+                        <button *ngIf="item.viewerIsFollowing" (click)="unfollowUser($event, item)"  pButton type="button" label="Unfollow" class="p-button-outlined p-button-sm unfollow"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="detail">
+                <div class="bio mb-2" *ngIf="item.bio">
+                    {{item.bio}}
+                </div>
+                <div class="flex flex-column">
+                    <div class="location" *ngIf="item.location">
+                        {{item.location}}
+                    </div>
+                    <div class="email" *ngIf="item.email">
+                        <a href="mailto:{{item.email}}" class="no-hilite">{{item.email}}</a>
+                    </div>
+                </div>
+                <div class="aux flex align-items-center">
+                    <div class="star no-hilite">
+                        <a href="{{item.url}}?tab=stars"><i class="pi pi-star"></i> {{item.starredRepositories?.totalCount | convertThousands }}</a>
+                    </div>
+                    <div class="followers no-hilite">
+                        <a href="{{item.url}}?tab=followers"> {{item.followers?.totalCount | convertThousands }} followers</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p-paginator
+            *ngIf="(output?.totalRecords ?? 0) > 0"
+            [rows]="(args?.pageSize ?? 10)" 
+            [showPageLinks]="false"
+            [showFirstLastIcon]="false"
+            [totalRecords]="(output.totalRecords??0)>1000 ? 1000 : (output.totalRecords??0)"
+            [showCurrentPageReport]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            (onPageChange)="loadPage($event)"
+            >
+        </p-paginator>
+    </div>
+    <ng-container *ngIf="!searchResults">
+        <div class="flex align-items-center justify-content-center">
+            Loading...
+        </div>
+    </ng-container>
+</div>
+
+<p-blockUI [blocked]="block" [baseZIndex]="1000" >
+    <div class="lds-heart"><div></div></div>
+</p-blockUI>

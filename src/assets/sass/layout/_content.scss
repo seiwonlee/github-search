@@ -1,16 +1,13 @@
-.layout-wrapper {
 
-    .layout-main {
-        .layout-content {
-            padding: 2rem;
-            flex: 1 1 auto;
-            background-color: var(--ss-layout);
-            border-bottom-left-radius: 30px;
-            border-top-left-radius: 30px;
-        }
-
-        .layout-main-mask {
-            display: none;
-        }
+.layout-main {
+    background-color: var(--ss-layout);
+    .layout-content {
+        padding: 2rem 2rem 0;
+        flex: 1 1 auto;
+        // border-bottom-left-radius: 30px;
+        // border-top-left-radius: 30px;
+    }
+    .layout-main-mask {
+        display: none;
     }
 }

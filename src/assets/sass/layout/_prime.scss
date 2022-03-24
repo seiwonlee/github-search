@@ -25,7 +25,7 @@
 .p-inputtext{
     border-width: 1px !important;
     border-style:solid !important;
-    border-color: var(--ss-font-opposite);
+    border-color: var(--ss-font);
     border-radius:5px;
 
     &:enabled:focus {
@@ -37,6 +37,9 @@
     padding-left: 2rem !important;
 }
 
+.p-blockui{
+    background:#0093ff38 !important;
+}
 .p-orderlist{
     height:100%;
 
@@ -158,19 +161,28 @@ p-dropdown{
         transition: box-shadow 0.2s;
     }
 }
+.p-link:disabled {
+    opacity: 0.3 !important;
+}
 .p-paginator{
     background: transparent;
     color: #6c757d;
     border: solid #e9ecef;
+    border-width:0;
     .p-paginator-pages{
         button{
-            font-size:0.7rem;
+            font-size:0.85rem;
         }
         .p-paginator-page{
             min-width: 1.5rem;
             height: 1.5rem;
             color: var(--ss-font)
         }
+    }
+    .p-paginator-pages .p-paginator-page.p-highlight {
+        background: #0068ba;
+        border-color: transparent;
+        color: white;
     }
 }
 .p-paginator .p-paginator-current,
@@ -181,7 +193,7 @@ p-dropdown{
     min-width: 1.5rem;
     height: 1.5rem;
     color:var(--ss-font);
-    opacity:0.6;
+    opacity:0.8;
     font-weight:300;
 }
 

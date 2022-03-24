@@ -35,11 +35,12 @@ app-todo{
   
 html {
     height: 100%;
+    background: #F5F7FA;
 }
 
 body {
     // font-family: Arial;
-    font-family: Lato, Helvetica, sans-serif;
+    font-family: 'Lato', Helvetica, sans-serif;
     font-size: $fontSize;
     color: var(--ss-font);
     -webkit-font-smoothing: antialiased;
@@ -49,7 +50,7 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
 
-    background-image: var(--ss-body);
+    // background-image: var(--ss-body);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -64,7 +65,7 @@ a {
     text-decoration: none;
 
     &:hover {
-        text-decoration: none;
+        text-decoration: underline;
     }
 }
 ul{list-style: none;padding:0}
@@ -104,86 +105,143 @@ ul{list-style: none;padding:0}
     right: 0.75rem;
     color: #708da9;
 }
-
+.p-dataview .p-dataview-content{
+    color:#000;
+}
 /* Utils */
 .clearfix:after {
-    content: " ";
-    display: block;
-    clear: both;
-  }
+  content: " ";
+  display: block;
+  clear: both;
+}
 
-  .grid>div{ /*cards container*/
-      padding:0.75rem;
+.grid>div{ /*cards container*/
+    padding:0.75rem;
+}
+
+.card {
+  background: var(--ss-card);
+  padding: 1.5rem 1rem;
+  margin-bottom: 16px;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.1), 0px 24px 36px rgba(0, 0, 0, 0.04);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.card:last-child {
+  margin-bottom: 0;
+}
+.card .card-header {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.card .card-subtitle {
+  color: #7B8794;
+  font-weight: 600;
+  margin: -1rem 0 1rem 0;
+}
+
+.p-toast.p-toast-top-right, .p-toast.p-toast-top-left, .p-toast.p-toast-top-center {
+  top: 70px;
+}
+
+.h-divider-left{
+    border-left:1px solid #00000022 !important;
+}
+@keyframes fadeInZoom {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
   }
-  
-  .card {
-    background: var(--ss-card);
-    padding: 1.5rem 1rem;
-    margin-bottom: 16px;
-    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.1), 0px 24px 36px rgba(0, 0, 0, 0.04);
-    border-radius: 14px;
-    overflow: hidden;
+  to {
+    opacity: 1;
+    transform: none;
   }
-  .card:last-child {
-    margin-bottom: 0;
+}
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -20px, 0);
   }
-  .card .card-header {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: center;
-    align-items: center;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
+  to {
+    opacity: 1;
+    transform: none;
   }
-  .card .card-subtitle {
-    color: #7B8794;
-    font-weight: 600;
-    margin: -1rem 0 1rem 0;
+}
+@keyframes fadeOutUp {
+  from {
+    opacity: 1;
   }
-  
-  .p-toast.p-toast-top-right, .p-toast.p-toast-top-left, .p-toast.p-toast-top-center {
-    top: 70px;
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -20px, 0);
+    transform: translate3d(0, -20px, 0);
   }
-  
-  .h-divider-left{
-      border-left:1px solid #00000022 !important;
+}
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+}
+
+.fadeOutUp {
+  -webkit-animation-name: fadeOutUp;
+  animation-name: fadeOutUp;
+}
+
+.lds-heart {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  transform: rotate(45deg);
+  transform-origin: 40px 40px;
+}
+.lds-heart div {
+  top: 32px;
+  left: 32px;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(11deg, #f64a4a, #f95858);
+  animation: lds-heart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.lds-heart div:after,
+.lds-heart div:before {
+  content: " ";
+  position: absolute;
+  display: block;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(316deg, #f64a4a, #ff7474e8);
+}
+.lds-heart div:before {
+  left: -24px;
+  border-radius: 50% 0 0 50%;
+}
+.lds-heart div:after {
+  top: -24px;
+  border-radius: 50% 50% 0 0;
+}
+@keyframes lds-heart {
+  0% {
+    transform: scale(0.95);
   }
-  @keyframes fadeInZoom {
-    from {
-      opacity: 0;
-      transform: scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: none;
-    }
+  5% {
+    transform: scale(1.1);
   }
-  @keyframes fadeInDown {
-    from {
-      opacity: 0;
-      transform: translate3d(0, -20px, 0);
-    }
-    to {
-      opacity: 1;
-      transform: none;
-    }
+  39% {
+    transform: scale(0.85);
   }
-  @keyframes fadeOutUp {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-      -webkit-transform: translate3d(0, -20px, 0);
-      transform: translate3d(0, -20px, 0);
-    }
+  45% {
+    transform: scale(1);
   }
-  .fadeInDown {
-    -webkit-animation-name: fadeInDown;
-    animation-name: fadeInDown;
+  60% {
+    transform: scale(0.95);
   }
-  
-  .fadeOutUp {
-    -webkit-animation-name: fadeOutUp;
-    animation-name: fadeOutUp;
+  100% {
+    transform: scale(0.9);
   }
+}

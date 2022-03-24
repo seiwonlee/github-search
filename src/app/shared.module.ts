@@ -38,6 +38,8 @@ import {RatingModule} from 'primeng/rating';
 import {BadgeModule} from 'primeng/badge';
 import {OrderListModule} from 'primeng/orderlist';
 import {AvatarModule} from 'primeng/avatar';
+import {DataViewModule} from 'primeng/dataview';
+import {PaginatorModule} from 'primeng/paginator';
 
 @NgModule({
   exports: [
@@ -76,7 +78,9 @@ import {AvatarModule} from 'primeng/avatar';
     RatingModule,
     BadgeModule,
     OrderListModule,
-    AvatarModule
+    AvatarModule,
+    DataViewModule,
+    PaginatorModule
   ],
 
   declarations: [],

@@ -1,0 +1,143 @@
+:host ::ng-deep{
+    .p-paginator-icon{
+        font-size:1.5rem;
+        &.pi-angle-left{
+            &:before {
+                content: "\e931";
+            }
+        }
+    }
+    .p-inputtext{
+        border-color:#ababab55;
+    }
+    .p-dropdown{
+        background:transparent;
+    }
+}
+.banner{
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    border-radius: 10px;
+    h2{margin:0;padding:0 0.75rem;font-weight:400;white-space: nowrap;}
+    button{
+        font-size: 0.8rem;
+        padding: 0rem 0.5rem !important;
+        border-radius: 8px;
+        max-height: 1.8rem;
+        margin-top: 2px;
+    }
+    input{
+        width:calc(100% - 70px)
+    }
+}
+.list{
+    position:relative;
+    z-index: 1;
+    transition: all 0.2s;
+}
+.list-item{
+    background:white;
+    padding:0.8rem 0rem;
+    border-bottom:1px solid #ababab33;
+    position: relative;
+    margin:10px auto;
+    transition:all 0.1s;
+    &:hover{
+        background:linear-gradient(119deg, #ffffff, #f4faff);
+        box-shadow: 0 2px 8px #00000022;
+        &:before, &:after
+        {
+            transition:all 0.5s;
+            z-index: -1;
+            position: absolute;
+            content: "";
+            bottom: 15px;
+            left: 10px;
+            width: 50%;
+            top: 75%;
+            max-width:400px;
+            background: #777777;
+            -webkit-box-shadow: 0 15px 10px #777777;
+            -moz-box-shadow: 0 15px 10px #777777;
+            box-shadow: 0 15px 10px #777777;
+            -webkit-transform: rotate(-3deg);
+            -moz-transform: rotate(-3deg);
+            -o-transform: rotate(-3deg);
+            -ms-transform: rotate(-3deg);
+            transform: rotate(-3deg);
+        }
+        &:after
+        {
+            -webkit-transform: rotate(3deg);
+            -moz-transform: rotate(3deg);
+            -o-transform: rotate(3deg);
+            -ms-transform: rotate(3deg);
+            transform: rotate(3deg);
+            right: 10px;
+            left: auto;
+        }
+    }
+    .no-hilite{
+        color:unset;
+        &:hover{
+            color: var(--ss-text-secondary);
+        }
+    }
+    .detail{
+        display:flex;
+        flex-direction: column;
+        margin: 0 0 0 55px;
+        .bio{
+            font-size:1rem;
+        }
+        .aux{
+            margin-top:10px;
+            i{
+                font-size: 0.8rem;
+            }
+            a{
+                color:unset;
+                &:hover{
+                    text-decoration: none;
+                    color: var(--ss-text-secondary);
+                }
+            }
+            .followers{
+                border-left: 1px solid #abababa8;
+                margin-left: 6px;
+                padding-left: 6px;
+            }
+        }
+    }
+}
+.header{
+    font-size:1rem;
+    div.handle{
+        padding:0 0 0  1rem;
+        display:flex;
+        align-items:center;
+
+        img{
+            border-radius: 50%;
+            width:30px;
+            height:30px;
+            border:1px solid #ababab;
+            padding:2px;
+            margin-right:10px;
+        }
+        a{
+            margin-right:5px;
+        }
+    }
+    div.action{
+        button{
+            font-size: 0.8rem;
+            padding: 0.3rem 0.6rem;
+            margin-right: 1rem;
+            &.unfollow{
+                color:red
+            }
+        }
+    }
+}

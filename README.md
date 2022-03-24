@@ -1,14 +1,21 @@
 # ExampleProject
+This sample project mimics the basic User Search feature from GitHub.com.
 
-Angular comes with a bit of a higher learning curve than other libraries like React or Vue since it is a full-fledged framework to develop enterprise-grade web or mobile applications.
-Sensei is an Angular template to aims to help get your application development journey on its way quickly.
+![alt text](https://openmodus.com/github-search/github-search-1.jpg "Sensei")
+![alt text](https://openmodus.com/github-search/github-search-2.jpg "Sensei")
 
-![alt text](https://openmodus.com/sensei/sensei-preview-1.jpg "Sensei")
-![alt text](https://openmodus.com/sensei/sensei-preview-2.jpg "Sensei")
+This application allows you to
+⋅⋅* search for users
+⋅⋅* navigate paginated results via Prev & Next 
+⋅⋅* see the search total count
+⋅⋅* see each user's stars count, follower total, email, avatar pic, etc.
+⋅⋅* click on a user name/login to navigate to GitHub.com.
+
+This sample uses both the GraphQL and REST API for demonstration purposes.
 
 ## Live Demo
 
-Project is deployed at: https://openmodus.com/sensei
+Project is deployed at: https://openmodus.com/github-search
 
 ## Development server
 

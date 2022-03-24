@@ -5,11 +5,9 @@ import { Profile } from '../models/profile';
   providedIn: 'root'
 })
 export class UiService {
-
   public static userProfile:Profile
   constructor() {
   }
-
   get userProfile(){
     return UiService.userProfile;
   }

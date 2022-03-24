@@ -1,13 +1,6 @@
-<div class="layout-wrapper" [ngClass]="{'layout-sidebar-active': sidebarActive}">
-    <app-topbar></app-topbar>
-    <app-menu></app-menu>
-  
-    <div class="layout-main" [class.locked]="hideOverflow">
-        <div class="layout-content">
-            <router-outlet [class.anim]="showCssAnim"></router-outlet>
-        </div>
-  
-        <app-footer></app-footer>
-        <!-- <div class="layout-main-mask"></div> -->
+<div class="layout-main overflow-hidden">
+    <div class="layout-content h-full pb-2">
+        <router-outlet></router-outlet>
     </div>
-  </div>
+    <app-footer></app-footer>
+</div>
