@@ -12,6 +12,7 @@ This application allows you to
 
 This sample uses both the GraphQL and the REST API for demonstration purposes.
 
+
 ## Note
 
 * The search results returned from GitHub is limited to maximum of 1000 records even if there are more records that match the search criteria.
@@ -22,6 +23,7 @@ This sample uses both the GraphQL and the REST API for demonstration purposes.
 ## Live Demo
 
 Project is deployed at: https://www.openmodus.com/github-search
+(Mobile-friendly)
 
 ## Development server
 
