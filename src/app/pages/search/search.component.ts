@@ -94,6 +94,7 @@ export class SearchComponent implements OnInit {
       endCursor:"",
       cursor:""
     }
+    this.selectedSort = {name: 'Best match', code: ''};
   }
   setupSort(){
     this.searchSortOptions = [
@@ -104,7 +105,6 @@ export class SearchComponent implements OnInit {
       {name: 'Fewest repositories', code: 'repositories-asc'},
     ];
     this.selectedSort = {name: 'Best match', code: ''};
-    
   }
   msg(severity, summary, err, life?){
     console.log(err);
