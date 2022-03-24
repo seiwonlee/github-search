@@ -1,8 +1,8 @@
 # ExampleProject
 This sample project mimics the basic User Search feature from GitHub.com.
 
-![alt text](https://openmodus.com/github-search/github-search-1.jpg "Sensei")
-![alt text](https://openmodus.com/github-search/github-search-2.jpg "Sensei")
+![alt text](https://openmodus.com/github-search/github-search-1.jpg =200x "search")
+![alt text](https://openmodus.com/github-search/github-search-2.jpg =200x "searh")
 
 This application allows you to
 ⋅⋅* search for users
