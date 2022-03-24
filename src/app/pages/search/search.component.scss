@@ -20,10 +20,16 @@
     top: 0;
     z-index: 1000;
     background: #f5f7fa;
+    border-radius: 5px;
     
     h2{
         margin:0;padding:0 0.75rem;font-weight:400;white-space: nowrap;
         overflow:hidden;text-overflow:ellipsis;
+    }
+    .search-box{
+        background:#eef1f4;
+        width:100%;
+        padding:10px;
     }
     button{
         font-size: 0.8rem;
@@ -98,6 +104,8 @@
         }
         .aux{
             margin-top:10px;
+            display:flex;
+            align-items: center;
             i{
                 font-size: 0.8rem;
             }
@@ -118,6 +126,11 @@
 }
 .header{
     font-size:1rem;
+    &>div{
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+    }
     div.handle{
         padding:0 0 0  1rem;
         display:flex;

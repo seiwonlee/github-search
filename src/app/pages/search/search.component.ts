@@ -3,6 +3,8 @@ import { SearchService } from 'src/app/services/search.service';
 import { MessageService } from "primeng/api";
 import { SearchInput } from 'src/app/models/search-input';
 import { SearchOutput } from 'src/app/models/search-output';
+import { Observable, of } from 'rxjs';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-search',
@@ -12,12 +14,11 @@ import { SearchOutput } from 'src/app/models/search-output';
 export class SearchComponent implements OnInit {
 
   block = false;
-  initialized = false;
   searchSortOptions:any;
   selectedSort:any;
   
   searchTextInput="";
-  searchResults:any=[];
+  users:Observable<User[]>;
   args:SearchInput;
   output:SearchOutput;
 
@@ -30,38 +31,32 @@ export class SearchComponent implements OnInit {
    }
   ngOnInit(): void {}
 
-  /* 
-  let query = `q=q&sort=followers&page=${this.page}&per_page=${this.pageSize}`;
-  While REST API is easier to use for pagination, it takes multiple subsequent calls to get at the child props
-  (i.e. starredRepositories).
-
-  While using GraphQL gives easier access to data, the pagination is made more difficult by GitHub API not supporting
-  'skip' or 'limit' operations on the search field. No choice but to just use the cursor to paginate Prev & Next only.
-  */
-  searchUsers(){
+  async searchUsers(paging?:boolean){
     if (this.searchTextInput.trim() === "") { return; }
+    if (!paging) this.initializeSearch();
 
     this.args.searchText = this.searchTextInput;
     const input = {
       queryString: `${this.args.searchText} sort:${this.selectedSort.code}`,
-      cursor: this.output.cursor,
+      cursor: (paging) ? this.output.cursor : "",
       pageSize: this.args.pageSize,
       direction: this.args.paginationDirection
     }
     this.block = true;
     this.searchService.searchUserGraphQL(input).subscribe(d=>{
       if (!d) {
-        this.searchResults = []; 
+        this.users = of<User[]>();
         return;
       }
       this.output.totalRecords = d.userCount;
       this.output.startCursor = d.pageInfo.startCursor;
       this.output.endCursor = d.pageInfo.endCursor;
-      this.searchResults = d.edges.map(d=>({...d.node, cursor:d.cursor}));
+      this.users = of<User[]>(
+        d.edges.map(d=>({...d.node, cursor:d.cursor}))
+      );
     })
     .add(() => {
       this.block = false;
-      this.initialized=true;
     }),
     err=>{
       this.msg('error','Search',err)
@@ -80,12 +75,11 @@ export class SearchComponent implements OnInit {
       this.output.cursor = this.output.startCursor;
     }
     this.args.currentPage = e.page;
-    this.searchUsers();
+    this.searchUsers(true);
   }
 
   changeSort(e){
-    this.initializeSearch();
-    this.loadPage({page:0});
+    this.searchUsers();
   }
   initializeSearch(){
     this.args = {
@@ -110,7 +104,6 @@ export class SearchComponent implements OnInit {
       {name: 'Fewest repositories', code: 'repositories-asc'},
     ];
     this.selectedSort = {name: 'Best match', code: ''};
-    // this.searchResults = [];
     
   }
   msg(severity, summary, err, life?){
