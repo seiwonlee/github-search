@@ -5,11 +5,11 @@ This sample project mimics the basic User Search feature from GitHub.com.
 
 
 This application allows you to
-⋅⋅* search for users
-⋅⋅* navigate paginated results via Prev & Next 
-⋅⋅* see the search total count
-⋅⋅* see each user's stars count, follower total, email, avatar pic, etc.
-⋅⋅* click on a user name/login to navigate to GitHub.com.
+* search for users
+* navigate paginated results via Prev & Next 
+* see the search total count
+* see each user's stars count, follower total, email, avatar pic, etc.
+* click on a user name/login to navigate to GitHub.com.
 
 This sample uses both the GraphQL and REST API for demonstration purposes.
 
