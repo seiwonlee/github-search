@@ -1,7 +1,7 @@
 # ExampleProject
 This sample project mimics the basic User Search feature from GitHub.com.
 
-<img src="https://openmodus.com/github-search/github-search.jpg" width="600" />
+<img src="https://openmodus.com/github-search/github-search.jpg" width="400" />
 
 
 This application allows you to
