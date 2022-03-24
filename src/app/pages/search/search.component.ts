@@ -31,14 +31,14 @@ export class SearchComponent implements OnInit {
    }
   ngOnInit(): void {}
 
-  async searchUsers(paging?:boolean){
+  async searchUsers(persist?:boolean){
     if (this.searchTextInput.trim() === "") { return; }
-    if (!paging) this.initializeSearch();
+    if (!persist) this.initializeSearch();
 
     this.args.searchText = this.searchTextInput;
     const input = {
       queryString: `${this.args.searchText} sort:${this.selectedSort.code}`,
-      cursor: (paging) ? this.output.cursor : "",
+      cursor: (persist) ? this.output.cursor : "",
       pageSize: this.args.pageSize,
       direction: this.args.paginationDirection
     }
@@ -79,7 +79,7 @@ export class SearchComponent implements OnInit {
   }
 
   changeSort(e){
-    this.searchUsers();
+    this.searchUsers(true);
   }
   initializeSearch(){
     this.args = {
