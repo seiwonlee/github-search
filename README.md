@@ -3,7 +3,6 @@ This sample project mimics the basic User Search feature from GitHub.com.
 
 <img src="https://openmodus.com/github-search/github-search.jpg" width="400" />
 
-
 This application allows you to
 * search for users
 * navigate paginated results via Prev & Next 
@@ -11,7 +10,13 @@ This application allows you to
 * see each user's stars count, follower total, email, avatar pic, etc.
 * click on a user name/login to navigate to GitHub.com.
 
-This sample uses both the GraphQL and REST API for demonstration purposes.
+This sample uses both the GraphQL and the REST API for demonstration purposes.
+
+## Note
+
+* The search results returned from GitHub is limited to maximum of 1000 records even if there are more records that match the search criteria.
+* The search uses the GraphQL API in order to bring back the users records with the desired nested properties (REST API cannot directly do this, but requires multiples calls to fetch the detail per user record). The downside, however, is that the GitHub GraphQL API does not provide the skip/limit operation for the search which means the direct click-to-go-to-page links can't be made available as the cursor-based pagination only can go back or forward a step at a time. The available search arguments are documented here: https://docs.github.com/en/graphql/reference/queries
+* Following and Unfollowing calls the REST API endpoints rather than using mutation for updates in GraphQL API.
 
 ## Live Demo
 
