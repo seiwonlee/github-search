@@ -20,7 +20,7 @@ This sample uses both the GraphQL and the REST API for demonstration purposes.
 
 ## Live Demo
 
-Project is deployed at: https://openmodus.com/github-search
+Project is deployed at: https://www.openmodus.com/github-search
 
 ## Development server
 
