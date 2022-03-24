@@ -1,8 +1,7 @@
 # ExampleProject
 This sample project mimics the basic User Search feature from GitHub.com.
 
-![alt text](https://openmodus.com/github-search/github-search-1.jpg =200x "search")
-![alt text](https://openmodus.com/github-search/github-search-2.jpg =200x "searh")
+<img src="https://openmodus.com/github-search/github-search-1.jpg" width="200" />
 <img src="https://openmodus.com/github-search/github-search-2.jpg" width="200" />
 
 This application allows you to
